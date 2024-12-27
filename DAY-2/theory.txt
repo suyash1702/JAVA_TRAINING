@@ -1,0 +1,60 @@
+// This is a simple Java program structure explained line by line
+
+// Class declaration - Every Java program must have at least one class
+class MyProgram {
+    // INSTANCE VARIABLES (also called member variables or fields)
+    
+    
+    // - Declared inside class but outside methods
+    // - Each object has its own copy of instance variables
+    // - Can have access modifiers: private, public, protected, default
+    private String name;      // Only accessible within this class
+    public int count;         // Accessible from any class
+    protected double value;   // Accessible in same package and subclasses
+    String description;       // Default access - only visible in same package
+    
+    // CONSTRUCTOR
+    // - Special method with same name as class
+    // - No return type
+    // - Called automatically when object is created using 'new'
+    // - Used to initialize instance variables
+    public MyProgram() {
+        name = "Default";
+        count = 0;
+    }
+    
+    // INSTANCE METHOD
+    // - Can access instance variables directly
+    // - Can only be called on an object instance
+    // - Can have any access modifier
+    public void displayInfo() {
+        System.out.println("Name: " + name);
+    }
+    
+    // Main method - Entry point of the program
+    // static - Method belongs to class rather than instance
+    public static void main(String[] args) {
+        // Create instance of MyProgram
+        MyProgram program = new MyProgram();
+        program.displayInfo();  // Calling instance method
+    }
+    
+} // End of class
+
+/* ACCESS MODIFIERS SUMMARY:
+ * public    - Accessible from anywhere
+ * private   - Only accessible within the declaring class
+ * protected - Accessible in same package and by subclasses
+ * default   - Only accessible within the same package
+ *
+ * INSTANCE vs STATIC:
+ * Instance members (variables/methods):
+ * - Belong to specific object instances
+ * - Require object creation to use
+ * - Can access both instance and static members
+ *
+ * Static members:
+ * - Belong to the class itself
+ * - Can be used without creating objects
+ * - Cannot directly access instance members
+ */

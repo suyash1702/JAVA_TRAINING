@@ -1,0 +1,521 @@
+The Four Pillars of Object-Oriented Programming (OOP)
+
+1. Encapsulation
+- Bundling data and methods that operate on that data within a single unit (class)
+- Restricting direct access to some object's components
+- Helps achieve data hiding and protects object's integrity
+- Reduces complexity and increases reusability
+
+2. Inheritance
+- Mechanism that allows a class to inherit properties and methods from another class
+- Enables code reuse and establishes relationships between classes
+- Supports the concept of hierarchical classification
+- Can be single, multiple, or multilevel inheritance
+
+3. Polymorphism
+- Ability of different classes to be treated as instances of the same class
+- Objects can take multiple forms while sharing common interface
+- Includes method overriding (runtime polymorphism)
+- Includes method overloading (compile-time polymorphism)
+- Enables flexibility and extensibility in software design
+
+4. Abstraction
+- Hiding complex implementation details and showing only necessary features
+- Reduces complexity by hiding unnecessary details
+- Helps in managing complexity and large codebases
+- Provides a clear separation between interface and implementation
+- Allows focusing on what an object does rather than how it does it
+
+*************************************************************************************************************
+
+Properties of Java
+
+1. Platform Independence (Write Once, Run Anywhere)[Compilation + Execution]
+- Java code compiles to bytecode that runs on JVM
+- Same code can run on any platform with JVM installed
+- No need to rewrite code for different operating systems
+
+2. Object-Oriented
+- Everything in Java is an object (except primitives)
+- Follows all OOP principles (encapsulation, inheritance, etc.)
+- Promotes modular and reusable code
+
+3. Simple and Secure
+- No pointers or explicit memory management
+- Automatic garbage collection
+- Strong type checking at compile time
+- Security manager for runtime security
+
+4. Robust and Reliable
+- Strong type checking and exception handling
+- Memory management without programmer intervention
+- Eliminates common programming errors
+
+5. Multithreaded
+- Built-in support for multithreading
+- Allows concurrent execution of multiple threads
+- Efficient for multi-user and real-time applications
+
+6. High Performance
+- JIT (Just-In-Time) compiler for faster execution[for chunk of repeated code] + Interpreter[High level code directly to machine code]
+- Support for native methods when needed
+- Efficient memory management
+
+7. Distributed
+- Extensive APIs for networking
+- Supports distributed computing
+- Easy to create distributed applications
+
+8. Dynamic
+- Supports dynamic linking
+- Can adapt to evolving environments
+- Designed to adapt to changing environments
+
+**********************************************************************************************************
+
+Java Code Compilation and Execution Flow:
+
+Source Code (.java)
+      ↓
+[Java Compiler (javac)]
+      ↓
+Bytecode (.class)
+      ↓
+[Java Virtual Machine (JVM)]
+      |
+      |----[Class Loader]
+      |        ↓
+      |    [Bytecode Verifier]
+      |        ↓
+      |----[JIT Compiler]---[Interpreter]
+      |        ↓               ↓
+      |    [Native Code]   [Machine Code]
+      ↓
+Machine Specific Instructions
+      ↓
+Program Execution
+
+Notes:
+- Source code (.java) is human-readable Java code
+- Bytecode (.class) is platform-independent intermediate code
+- JVM components work together to execute the program:
+  * Class Loader: Loads required classes
+  * Bytecode Verifier: Ensures code safety
+  * JIT Compiler: Compiles frequently used code
+  * Interpreter: Executes code line by line
+- Final execution happens as machine-specific instructions
+
+********************************************************************************************************************
+
+Class Loader in JVM:
+
+1. Definition:
+- System component that loads, links and initializes Java class and interface types
+- Loads class files into memory when they are needed by an application
+
+2. Types of Class Loaders:
+a) Bootstrap Class Loader[Standard library clases]
+   - Written in native code (C++)
+   - Loads core Java API classes from rt.jar
+   - Parent of all other class loaders
+   
+b) Extension Class Loader[Except than standard library classes]
+   - Child of Bootstrap Class Loader
+   - Loads classes from extension directories
+   - Located in $JAVA_HOME/lib/ext directory
+
+c) System/Application Class Loader[User Defined Classses]
+   - Child of Extension Class Loader
+   - Loads application classes from classpath
+   - Default loader for application classes
+
+3. Class Loading Process:
+- Loading: Finds and imports binary data for a type
+- Linking: Performs verification, preparation, and resolution
+- Initialization: Executes class initialization method
+
+4. Key Features:
+- Hierarchical delegation model
+- Visibility rules
+- Unique namespace for each class loader
+- Dynamic loading
+- Type safety enforcement
+
+5. Benefits:
+- Security through separation
+- Dynamic class loading at runtime
+- Namespace management
+- Resource isolation
+
+********************************************************************************************************************
+
+JVM Memory Structure:
+
+1. Method Area (Shared among threads):
+   - Stores class structures, methods, constructors
+   - Contains static variables and method code
+   - Part of non-heap memory
+
+2. Heap (Shared among threads):
+   - Runtime data area where objects are allocated
+   - Managed by garbage collector
+   - Divided into:
+     * Young Generation (Eden + Survivor spaces)
+     * Old Generation
+   - Largest memory area in JVM
+
+3. Stack (Per thread):
+   - Stores local variables, partial results
+   - Contains stack frames for method calls
+   - LIFO (Last In First Out) structure
+   - Thread-specific memory area
+
+4. Program Counter Register (Per thread):
+   - Contains address of current executing instruction
+   - Each thread has its own PC register
+   - Helps in maintaining execution sequence
+
+5. Native Method Stack (Per thread):
+   - Used for executing native (non-Java) code
+   - Supports native method calls
+   - Implementation-dependent
+
+Key Characteristics:
+- Memory management is automatic
+- Garbage collection handles deallocation
+- Thread-safe memory areas
+- Dynamic memory allocation
+
+Memory Management:
+- Automatic allocation and deallocation
+- Garbage collection for unused objects
+- Memory pools for efficient reuse
+- Out of memory handling mechanisms
+
+********************************************************************************************************************
+JVM Execution Components:
+
+1. Execution Engine:
+   - Heart of JVM that executes bytecode
+   - Contains interpreter, JIT compiler, and garbage collector
+   - Reads bytecode line by line and executes instructions
+   - Works with runtime data areas to execute programs
+   - Manages memory allocation and deallocation
+
+2. Interpreter:
+   - Reads bytecode instructions sequentially
+   - Translates each instruction into native code
+   - Executes instructions one by one
+   - Slower execution as interpretation happens repeatedly
+   - Simple but less efficient for frequently executed code
+
+3. JIT (Just-In-Time) Compiler:
+   - Compiles entire bytecode to native code at runtime
+   - Improves performance for frequently executed code
+   - Works alongside interpreter
+   - Key features:
+     * Identifies "hot spots" (frequently executed code)
+     * Performs optimizations
+     * Caches compiled code for reuse
+   - Adaptive compilation based on execution patterns
+
+4. Garbage Collection:
+   - Automatic memory management system
+   - Identifies and removes unused objects
+   - Different algorithms:
+     * Serial GC
+     * Parallel GC
+     * CMS (Concurrent Mark Sweep)
+     * G1 (Garbage First)
+   - Phases:
+     * Mark - Identifies live objects
+     * Sweep - Removes unused objects
+     * Compact - Defragments memory
+   - Runs in background with minimal interference
+
+5. Native Interface (JNI):
+   - Enables Java code to interact with native applications
+   - Provides framework for calling:
+     * C/C++ functions
+     * System-specific features
+     * Legacy applications
+   - Supports both ways:
+     * Java calling native code
+     * Native code calling Java methods
+   - Platform-dependent implementation
+   - Requires careful memory management
+
+Key Points:
+- Execution engine optimizes performance
+- JIT compiler improves execution speed
+- Garbage collection manages memory automatically
+- Native interface enables system integration
+- Components work together for efficient execution
+
+********************************************************************************************************************
+
+CLASS IN JAVA:
+
+1. Definition:
+   - Blueprint for creating objects
+   - Defines attributes (fields) and behaviors (methods)
+   - Basic unit of Object-Oriented Programming (OOP)
+   - Template that describes object state and behavior
+
+2. Components:
+   - Fields (Variables)
+     * Instance variables
+     * Static variables (Class variables)
+     * Final variables (Constants)
+   - Methods
+     * Instance methods
+     * Static methods
+     * Constructors
+   - Access modifiers
+     * public
+     * private
+     * protected
+     * default (package-private)
+
+3. Types of Classes:
+   - Concrete Class
+   - Abstract Class
+   - Final Class
+   - Inner Class
+   - Anonymous Class
+   - Static Nested Class
+
+4. Class Declaration:
+   - Syntax:
+     * [access_modifier] class ClassName {
+         // fields
+         // methods
+       }
+   - Example:
+     * public class Student {
+         private String name;
+         private int age;
+         
+         public Student(String name, int age) {
+             this.name = name;
+             this.age = age;
+         }
+       }
+
+5. Class Features:
+   - Inheritance
+   - Encapsulation
+   - Polymorphism
+   - Data Abstraction
+   - Constructor Overloading
+   - Method Overloading
+
+Key Points:
+- Classes are templates for objects
+- Support OOP principles
+- Can inherit from other classes
+- Provide encapsulation through access modifiers
+- Enable code reusability and organization
+
+********************************************************************************************************************
+
+OBJECT IN JAVA
+-------------
+
+1. Definition:
+   - An instance of a class
+   - Contains state (fields) and behavior (methods)
+   - Created using the 'new' keyword
+   - Occupies memory space when instantiated
+
+2. Object Creation:
+   - Syntax:
+     * ClassName objectName = new ClassName();
+   - Example:
+     * Student student1 = new Student("John", 20);
+
+3. Object Properties:
+   - State (attributes/fields)
+   - Behavior (methods)
+   - Identity (unique address in memory)
+
+4. Object Lifecycle:
+   - Creation (using new keyword)
+   - Usage (accessing members)
+   - Destruction (garbage collection)
+
+5. Object Features:
+   - Can access class members based on access modifiers
+   - Each object has its own copy of instance variables
+   - Objects share static members of the class
+   - Can be passed as parameters to methods
+   - Can be returned from methods
+
+6. Object References:
+   - Variables that store object addresses
+   - Can be assigned to other reference variables
+   - Can be null
+   - Used to access object members using dot operator
+
+Key Points:
+- Objects are instances of classes
+- Multiple objects of same class can exist
+- Each object has independent state
+- Objects are destroyed automatically by garbage collector
+- Reference variables are used to access objects
+
+********************************************************************************************************************
+
+Example of a Class and Object:
+
+// Class definition
+class Chair {
+    // Instance variables (state)
+    private String material;
+    private String color;
+    private boolean hasArmRests;
+    private double height;
+
+    // Constructor
+    public Chair(String material, String color, boolean hasArmRests, double height) {
+        this.material = material;
+        this.color = color;
+        this.hasArmRests = hasArmRests;
+        this.height = height;
+    }
+
+    // Methods (behavior)
+    public void adjustHeight(double newHeight) {
+        this.height = newHeight;
+        System.out.println("Chair height adjusted to: " + height);
+    }
+
+    public void displayInfo() {
+        System.out.println("Chair Details:");
+        System.out.println("Material: " + material);
+        System.out.println("Color: " + color);
+        System.out.println("Has Armrests: " + hasArmRests);
+        System.out.println("Height: " + height);
+    }
+}
+
+// Creating and using objects
+public class ChairDemo {
+    public static void main(String[] args) {
+        // Creating objects
+        Chair officeChair = new Chair("Leather", "Black", true, 45.5);
+        Chair diningChair = new Chair("Wood", "Brown", false, 40.0);
+
+        // Using objects
+        officeChair.displayInfo();
+        officeChair.adjustHeight(47.0);
+
+        diningChair.displayInfo();
+    }
+}
+
+
+*************************************************************************************************
+
+class Chair{
+    int price;
+    string typeOfMaterial;
+    string hasArmRests;
+    string colour;
+}
+
+*************************************************************************************************
+
+JDK (Java Development Kit):
+- JDK is a software development environment used for developing Java applications
+- It includes:
+  1. Java Runtime Environment (JRE)
+  2. Development tools like:
+     - javac (compiler)
+     - java (interpreter)
+     - javadoc (documentation generator)
+     - debugger
+     - standard library
+- JDK is needed to:
+  - Write Java code
+  - Compile Java code into bytecode
+  - Debug Java applications
+  - Document Java code
+
+Key Components:
+1. Java Compiler (javac):
+   - Converts .java source files into .class bytecode files
+   - Performs syntax checking and error detection
+
+2. Java Runtime Environment (JRE):
+   - Contains Java Virtual Machine (JVM)
+   - Contains core classes and supporting files
+   - Needed to run Java applications
+
+3. Development Tools:
+   - javadoc: Generates HTML documentation from Java source code
+   - debugger: Helps find and fix bugs in code
+   - jar: Archives Java files into a single file
+   - javap: Disassembles class files
+
+Version History:
+- JDK versions are regularly released with new features
+- Latest LTS (Long Term Support) versions: 8, 11, 17
+- Each version brings performance improvements and new capabilities
+
+
+******************************************************************************
+We use IDE instead of terminal because it gives.....
+
+RAD (Rapid Application Development):
+- A software development methodology focused on rapid prototyping and quick feedback
+- Emphasizes quick development and iteration over extensive planning
+- Typically involves 4 phases:
+  1. Requirements Planning
+  2. User Design
+  3. Construction
+  4. Cutover (Implementation)
+
+***********************************************************************************
+
+Servlets:
+- Server-side Java programs that handle HTTP requests and generate responses
+- Run on Java-enabled web servers (servlet containers)
+- Key features:
+  1. Platform independent
+  2. Secure
+  3. Portable
+  4. Robust
+
+Servlet Architecture:
+1. Web Container:
+   - Manages servlet lifecycle
+   - Handles requests/responses
+   - Provides runtime environment
+
+2. Lifecycle Methods:
+   - init(): Called once when servlet is created
+   - service(): Called for each client request
+   - destroy(): Called when servlet is destroyed
+
+3. Key Components:
+   - HttpServlet class
+   - ServletRequest/ServletResponse interfaces
+   - ServletContext interface
+   - ServletConfig interface
+
+Advantages:
+- Better performance than CGI
+- Platform independent
+- Secure
+- Robust error handling
+- Access to Java ecosystem
+
+Common Uses:
+- Process form data
+- Database operations
+- Session tracking
+- Dynamic page generation
+- RESTful web services
+
+***********************************************************************************
