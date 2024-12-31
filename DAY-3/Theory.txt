@@ -1,0 +1,652 @@
+Constructor :
+    - to initialize instance variable
+    - Constructor name same as class
+    - No return type is given for Constructor
+    - "new" keyword is to ivoke constructor
+
+class Constructors{
+
+    int a,b ;  // Default value by JVM to "0" during run time
+
+    //Default constructor => As parameters are not defined
+    public Constructors()
+    {
+
+    }
+
+    //Parameterized Constructor
+    public Constructors(int a,int b)
+    {
+
+    }
+
+    // Copy Constructor
+    public Constructors( Constructors obj2)
+    {
+        this.a = obj2.a;
+        this.b = obj2.b;
+
+    }
+}
+
+class MainConstructors{
+    public static void main(String []args)
+    {
+        // Object definition           
+        Constructors obj =
+
+        // Object Construction
+        new Constructors();       // Default Constructors
+
+        Constructors O1 =
+        new Constructors(10,20);  // Parameterized Constructors
+
+        Constructors obj1 =
+        new Constructors(obj);
+    }
+    
+}
+
+*******************************************************************************************
+
+Classes in Java include the following components:
+
+1. Fields (Instance Variables):
+   - Store object state/data
+   - Defined at class level
+   - Each object has its own copy
+   - Example: int age, String name
+
+2. Methods:
+   - Define object behavior/actions
+   - Can access and modify fields
+   - Can take parameters and return values
+   - Example: void study(), int calculateTotal()
+
+3. Constructorsce:
+   - To initialize instance variable
+   - Special methods to initialize objects
+   - Same name as class
+   - Called when creating new objects
+   - Can be default, parameterized or copy constructors
+
+4. Blocks:
+   - Static blocks: Run once when class loads (to initialize static var)
+   - Instance blocks: Run for each object creation
+   - Used for initialization code
+   - Example: { // instance block }, static { // static block }
+
+5. Nested Classes/Interfaces:
+   - Classes defined within another class
+   - Can be static or non-static
+   - Helps organize related code
+   - Example: class Outer { class Inner { } }
+
+
+**************************************************************************************************
+
+
+Data Types in Java:
+1. Primitive Data Types:
+   - byte, short, int, long (integer numbers)
+   - float, double (decimal numbers) 
+   - char (single character)
+   - boolean (true/false)
+
+2. Reference/Object Data Types:
+   - Classes
+   - Arrays
+   - Interfaces
+   - String
+   - etc.
+
+*****************************************************************************************
+
+Fields (Variables) in Java:
+1. Instance Variables (Non-static fields):
+   - Declared inside class but outside methods
+   - Created when object is instantiated
+   - Each object has its own copy
+   Example:
+   class Student {
+       int rollNo;     // instance variable
+       String name;    // instance variable
+   }
+
+2. Static Variables (Class Variables):
+   - Declared with static keyword
+   - Shared by all objects of the class
+   Example:
+   class School {
+       static String schoolName;  // static variable
+   }
+
+3. Local Variables:
+   - Declared inside methods
+   - Scope limited to the method
+   Example:
+   void method() {
+       int x = 10;  // local variable
+   }
+
+****************************************************************************************
+
+Behavior (Methods) in Java:
+1. Instance Methods:
+   - Can access instance variables
+   - Called using object reference
+   Example:
+   void study() {
+       System.out.println("Studying...");
+   }
+
+2. Static Methods:
+   - Can't access instance variables directly
+   - Called using class name
+   Example:
+   static void schoolInfo() {
+       System.out.println("School information");
+   }
+
+3. Constructor Methods:
+   - Special methods to initialize objects
+   - Same name as class
+   Example:
+   Student() {
+       rollNo = 0;
+       name = "Unknown";
+   }
+
+
+*****************************************************************************************************
+
+ MARKER INTERFACE
+ - A marker interface is an interface that has no methods or constants inside it
+ - It provides run-time type information about objects
+ - It is used to "mark" classes for special handling by JVM/framework
+ - Examples of marker interfaces in Java:
+   * Serializable - Marks class as serializable
+   * Cloneable - Marks class as cloneable
+   * Remote - Marks class for RMI
+ - Also called "tagging interface"
+ Example:
+ interface Deletable { }  // Marker interface with no methods
+
+ ****************************************************************************************************
+
+ OBJECTS IN JAVA
+ - An object is an instance of a class
+ - It has state (fields/variables) and behavior (methods)
+ - Objects are created using the 'new' keyword followed by a constructor call
+ 
+ Object Creation:
+ 1. Using new operator:
+    ClassName object = new ClassName();
+    Example:
+    Student student1 = new Student();
+
+ 2. Using constructors:
+    - Default constructor (no parameters):
+      Student s1 = new Student();
+    
+    - Parameterized constructor:
+      Student s2 = new Student("John", 101);
+    
+    - Copy constructor:
+      Student s3 = new Student(s2); // Creates copy of s2
+
+ Key Points:
+ - Each object gets its own copy of instance variables
+ - Objects share static variables of the class
+ - Objects can call instance methods using dot operator (.)
+ - Memory is allocated on heap when object is created
+ - Object becomes eligible for garbage collection when no references point to it
+
+ Example:
+ class Student {
+     String name;    // instance variable
+     int rollNo;     // instance variable
+     
+     Student() {     // default constructor
+         name = "Unknown";
+         rollNo = 0;
+     }
+     
+     void display() {  // instance method
+         System.out.println(name + " : " + rollNo);
+     }
+ }
+
+ *****************************************************************************************************
+
+ Classes are Static
+ Objects are dynamic
+
+***************************************************************************************************** 
+
+VARIABLE SHADOWING IN JAVA
+- Variable shadowing occurs when a variable declared within a scope (like a method or block) has the same name as a variable declared in an outer scope
+- The inner variable "shadows" or hides the outer variable within its scope
+- The outer variable becomes inaccessible in that scope
+
+Example:
+class Example {
+    int x = 10;  // Class level variable
+    
+    void method() {
+        int x = 20;  // Local variable shadows class variable
+        System.out.println(x);      // Prints 20 (local x)
+        System.out.println(this.x); // Prints 10 (class level x)
+    }
+}
+
+Key Points:
+- Common between instance variables and local variables
+- Can be avoided using 'this' keyword to refer to instance variables
+- Considered bad practice as it reduces code readability
+- Most IDEs warn about variable shadowing
+
+Best Practice:
+- Use different names for variables in different scopes
+- If shadowing is necessary, use 'this' keyword clearly
+- Document the intentional shadowing for maintenance
+
+**************************************************************************************************
+
+Homework : 
+
+ class numbers
+ 2 numbers
+ parameterized constructor
+ print instance var
+ asnd the used
+ this
+ 
+ ************************************************************************************************
+
+BYTE IN JAVA
+- A byte is the smallest integer data type in Java
+- Size: 8 bits (1 byte)
+- Range: -128 to 127 (-2^7 to 2^7-1)
+- Default value: 0
+
+Key Points:
+1. Memory Efficiency
+   - Uses less memory than int (4 bytes) or short (2 bytes)
+   - Useful when working with streams of data or large arrays
+   - Good for saving memory in large arrays when values are small
+
+2. Value Range
+   - Signed 8-bit value
+   - If value exceeds range, compilation error occurs
+   - Overflow/underflow can happen in calculations
+
+3. Common Uses
+   - File handling and I/O operations
+   - Network programming (data transfer)
+   - When working with small whole numbers
+   - Memory-sensitive applications
+
+Example:
+byte smallNumber = 127;    // Maximum value
+byte negative = -128;      // Minimum value
+// byte invalid = 128;     // Compilation error - exceeds range
+
+4. Type Conversion
+   - Automatic widening to larger types (int, long etc.)
+   - Requires explicit casting when converting larger types to byte
+   Example:
+   int x = 10;
+   byte b = (byte)x;    // Explicit casting required
+
+5. Performance
+   - JVM internally promotes byte to int for arithmetic
+   - May not provide performance benefits in calculations
+   - Main advantage is memory savings
+
+Best Practices:
+- Use when memory optimization is crucial
+- Consider using int for general arithmetic operations
+- Be careful with type conversion to avoid data loss
+- Check for potential overflow in calculations
+
+**************************************************************************************
+
+DATA TYPES AND THEIR BITS IN JAVA
+
+1. byte
+   - Size: 8 bits (1 byte)
+   - Range: -128 to 127 (-2^7 to 2^7-1)
+
+2. short
+   - Size: 16 bits (2 bytes) 
+   - Range: -32,768 to 32,767 (-2^15 to 2^15-1)
+
+3. int
+   - Size: 32 bits (4 bytes)
+   - Range: -2^31 to 2^31-1
+   - Approximately -2 billion to 2 billion
+
+4. long
+   - Size: 64 bits (8 bytes)
+   - Range: -2^63 to 2^63-1
+   - For very large whole numbers
+
+Memory Usage Comparison:
+- byte:  8 bits  = 1 byte
+- short: 16 bits = 2 bytes
+- int:   32 bits = 4 bytes  
+- long:  64 bits = 8 bytes
+
+Note: The larger data types can store bigger numbers but use more memory.
+Choose the appropriate data type based on your requirements for range vs memory usage.
+
+**************************************************************************************
+
+FLOATING POINT DATA TYPES IN JAVA
+
+1. float
+   - Size: 32 bits (4 bytes)
+   - Precision: ~7 decimal digits
+   - Range: ±3.4 x 10^-38 to ±3.4 x 10^38
+   - Must use 'f' or 'F' suffix (e.g., 3.14f)
+   - Less precise but uses less memory
+   Example:
+   float price = 19.99f;
+   float scientific = 1.23e4f;  // 12300.0
+
+2. double (default for decimals)
+   - Size: 64 bits (8 bytes) 
+   - Precision: ~15-17 decimal digits
+   - Range: ±1.7 x 10^-308 to ±1.7 x 10^308
+   - No suffix needed
+   - More precise but uses more memory
+   Example:
+   double pi = 3.14159265359;
+   double scientific = 1.23e-4;  // 0.000123
+
+Key Differences:
+- double has roughly twice the precision of float
+- double is the default choice for decimal values
+- float requires explicit 'f' suffix to avoid compilation error
+- double is preferred for financial calculations due to precision
+
+Best Practices:
+- Use double by default for decimal numbers
+- Use float when memory is critical and less precision is acceptable
+- Avoid using floating points for precise financial calculations
+  (Use BigDecimal instead)
+- Be aware of potential rounding errors in calculations
+
+Memory Usage:
+- float:  32 bits = 4 bytes
+- double: 64 bits = 8 bytes
+
+Note: Due to how floating-point numbers are stored in binary,
+some decimal numbers cannot be represented exactly, which can
+lead to small rounding errors in calculations.
+
+**************************************************************************************
+
+CHARACTER DATA TYPE IN JAVA
+
+1. char
+   - Size: 16 bits (2 bytes)
+   - Stores a single Unicode character
+   - Range: 0 to 65,535 (unsigned)
+   - Uses single quotes for literals
+   Example:
+   char letter = 'A';
+   char symbol = '$';
+   char unicode = '\u0041';  // Unicode for 'A'
+
+Key Points:
+- char is based on Unicode (UTF-16)
+- Can store any character from any language
+- Can be used in arithmetic operations (uses ASCII/Unicode value)
+- Cannot use double quotes (reserved for String)
+- Special characters use escape sequences:
+  \n - newline
+  \t - tab
+  \' - single quote
+  \" - double quote
+  \\ - backslash
+
+Common Operations:
+- Character comparison using relational operators
+  Example: 'A' < 'B' is true
+- Type casting between char and int
+  Example: 
+  char c = 65;  // 'A'
+  int n = 'A';  // 65
+
+Best Practices:
+- Use single quotes for char literals
+- Use String for multiple characters
+- Be careful with implicit type conversion
+- Consider Unicode when working with international text
+
+Memory Usage:
+- char: 16 bits = 2 bytes
+
+Note: Java uses Unicode encoding, allowing chars to represent
+characters from virtually any written language in the world.
+
+**************************************************************************************
+
+ASCII (American Standard Code for Information Interchange)
+
+- A character encoding standard for electronic communication
+- Uses 7 bits to represent each character
+- Range: 0 to 127 (128 total characters)
+- Includes:
+  - Uppercase letters (A-Z): 65-90
+  - Lowercase letters (a-z): 97-122 
+  - Numbers (0-9): 48-57
+  - Special characters (!@#$ etc.)
+  - Control characters (newline, tab etc.)
+
+Key Points:
+1. Structure
+   - First 32 codes (0-31): Control characters
+   - 32-127: Printable characters
+   - Extended ASCII uses 8 bits (0-255)
+
+2. Common ASCII Values
+   - Space: 32
+   - '0': 48
+   - 'A': 65
+   - 'a': 97
+   Example:
+   char c = 65;    // Stores 'A'
+   int n = 'A';    // Stores 65
+
+3. Limitations
+   - Only supports English characters
+   - Cannot represent characters from other languages
+   - Led to development of Unicode (which Java uses)
+
+4. Usage in Java
+   - Part of Unicode (first 128 characters)
+   - Useful for basic text processing
+   - Compatible with most systems
+   Example:
+   // Check if character is uppercase
+   char ch = 'B';
+   boolean isUpper = ch >= 65 && ch <= 90;
+
+Best Practices:
+- Use for basic English text processing
+- Prefer Unicode for international text
+- Remember ASCII is subset of Unicode
+- Use character literals instead of numbers when possible
+
+Note: While Java internally uses Unicode, understanding ASCII is important
+as it forms the foundation of character encoding and is still widely used
+in many computing contexts.
+
+**************************************************************************************
+
+BOOLEAN IN JAVA
+- Boolean is a primitive data type that can hold only true or false values
+- Size: 1 bit (but JVM typically uses 1 byte for storage optimization)
+- Default value: false
+
+Key Points:
+1. Values
+   - Can only be true or false
+   - Cannot use 1 or 0 directly as boolean values
+   - Null is not allowed (use Boolean wrapper class for nullable booleans)
+
+2. Common Uses
+   - Conditional statements (if, while)
+   - Flag variables
+   - Return values for comparison operations
+   Example:
+   boolean isActive = true;
+   boolean isValid = (age >= 18);
+   
+3. Logical Operations
+   - AND (&&)
+   - OR (||) 
+   - NOT (!)
+   Example:
+   boolean result = (x > 0) && (y < 100);
+   boolean inverse = !isActive;
+
+4. Best Practices
+   - Use meaningful names that indicate true/false nature
+   - Prefix with "is", "has", "can", etc.
+   - Avoid double negatives in naming
+   Good: isEnabled, hasPermission, canEdit
+   Bad: notDisabled, flag1
+
+5. Memory and Performance
+   - Most memory-efficient primitive type
+   - JVM may optimize storage internally
+   - Excellent for conditional logic and control flow
+
+Common Patterns:
+- State flags: boolean isRunning = false;
+- Validation results: boolean isValid = checkInput();
+- Toggle switches: boolean lightOn = !lightOn;
+
+Note: For collections or when null values are needed, use the Boolean 
+wrapper class instead of the primitive boolean type.
+
+**************************************************************************************
+PRIMITIVE DATA TYPE STORAGE IN JAVA
+
+Memory Storage:
+- Primitive data types are stored directly in memory (stack)
+- Each primitive type has a fixed size allocation
+- Values are stored directly, not as references
+
+Stack Memory Characteristics:
+- Fast access time
+- Memory managed automatically
+- Size determined at compile time
+- Memory allocated/deallocated in LIFO order
+
+Example of Stack Storage:
+int x = 10;    // Value 10 stored directly in stack
+long y = 100L; // Value 100 stored directly in stack
+
+Comparison with Object Storage:
+Primitive Types:
+- Stored in stack
+- Fixed memory size
+- Direct value access
+- Faster operations
+
+Reference Types:
+- Reference stored in stack
+- Actual object in heap
+- Access via reference
+- Slightly slower operations
+
+Memory Size by Type:
+1. boolean: 1 bit (typically 1 byte)
+2. byte: 8 bits (1 byte)
+3. char: 16 bits (2 bytes)
+4. short: 16 bits (2 bytes)
+5. int: 32 bits (4 bytes)
+6. float: 32 bits (4 bytes)
+7. long: 64 bits (8 bytes)
+8. double: 64 bits (8 bytes)
+
+Best Practices:
+- Choose appropriate type for memory efficiency
+- Consider memory usage in large arrays
+- Use primitive types when possible for better performance
+- Use wrapper classes only when necessary
+
+**************************************************************************************
+LITERALS IN JAVA
+
+A literal is a fixed value that appears directly in the code. Java supports several types of literals:
+
+1. Integer Literals
+   - Decimal (base 10): 42, -17, 0
+   - Octal (base 8, starts with 0): 052, 037
+   - Hexadecimal (base 16, starts with 0x): 0xFF, 0x1A
+   - Binary (base 2, starts with 0b): 0b1010, 0b1100
+   Example:
+   int decimal = 42;
+   int octal = 052;      // Equal to 42 decimal
+   int hex = 0x2A;       // Equal to 42 decimal
+   int binary = 0b101010;// Equal to 42 decimal
+
+2. Floating-Point Literals
+   - Standard notation: 3.14, -0.001
+   - Scientific notation: 1.23e4, 1.23E-4
+   - float suffix (f or F): 3.14f, 6.022F
+   - double suffix (d or D, optional): 3.14d, 2.718D
+   Example:
+   double pi = 3.14159;
+   float e = 2.718f;
+
+3. Character Literals
+   - Single character in single quotes: 'A', '1', '$'
+   - Escape sequences: '\n', '\t', '\''
+   - Unicode values: '\u0041' (A)
+   Example:
+   char letter = 'A';
+   char newline = '\n';
+
+4. String Literals
+   - Text in double quotes: "Hello", "Java"
+   - Can include escape sequences
+   Example:
+   String message = "Hello\nWorld";
+   String path = "C:\\Program Files";
+
+5. Boolean Literals
+   - Only two values: true, false
+   Example:
+   boolean flag = true;
+   boolean done = false;
+
+6. Null Literal
+   - Special literal: null
+   - Represents absence of value for object references
+   Example:
+   String str = null;
+
+Best Practices:
+- Use underscores for readability in numeric literals
+  Example: int million = 1_000_000;
+- Choose appropriate literal type for precision needs
+- Use meaningful string literals
+- Consider using constants for frequently used literals
+
+Note: Literals are the simplest form of expressing values in Java code
+and are essential for initializing variables and expressing fixed values.
+
+**************************************************************************************
+
+Homework :
+Add extra no. in float after decimal
+also try for double
+
+*************************************************************************************
