@@ -259,8 +259,8 @@ Homework :
  2 numbers
  parameterized constructor
  print instance var
- asnd the used
- this
+ and then
+ used this
  
  ************************************************************************************************
 
@@ -347,7 +347,7 @@ FLOATING POINT DATA TYPES IN JAVA
 
 1. float
    - Size: 32 bits (4 bytes)
-   - Precision: ~7 decimal digits
+   - Precision: ~7 decimal digits => single precision
    - Range: ±3.4 x 10^-38 to ±3.4 x 10^38
    - Must use 'f' or 'F' suffix (e.g., 3.14f)
    - Less precise but uses less memory
@@ -357,7 +357,7 @@ FLOATING POINT DATA TYPES IN JAVA
 
 2. double (default for decimals)
    - Size: 64 bits (8 bytes) 
-   - Precision: ~15-17 decimal digits
+   - Precision: ~15-17 decimal digits => double precision
    - Range: ±1.7 x 10^-308 to ±1.7 x 10^308
    - No suffix needed
    - More precise but uses more memory

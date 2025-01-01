@@ -1,0 +1,166 @@
+TYPE CASTING IN JAVA
+
+Type casting is the process of converting one data type to another.
+There are two types of casting in Java:
+
+1. Implicit Casting (Widening/Automatic)
+   - Converting smaller data type to larger data type
+   - Done automatically by Java
+   - No data loss occurs
+   - Also called upcasting
+   Example:
+   byte -> short -> int -> long -> float -> double
+   char -> int
+   
+   int num = 100;
+   long bigNum = num;    // Implicit casting from int to long
+   double d = bigNum;    // Implicit casting from long to double
+
+2. Explicit Casting (Narrowing)
+   - Converting larger data type to smaller data type
+   - Must be done manually using cast operator ()
+   - Potential data loss can occur
+   - Also called downcasting
+   Example:
+   double -> float -> long -> int -> short -> byte
+   
+   double d = 100.04;
+   long l = (long)d;    // Explicit casting from double to long
+   int i = (int)l;      // Explicit casting from long to int
+
+Key Points:
+- Casting between incompatible types is not allowed
+  Example:
+  String str = "123";
+  int num = (int)str;    // Not allowed - compilation error
+  // Use Integer.parseInt(str) instead
+- Casting may result in loss of precision or data
+- The cast operator has high precedence
+- Boolean type cannot be cast to/from any other type
+
+Common Scenarios:
+1. Numeric Type Casting
+   int x = 10;
+   double y = x;        // Implicit casting
+   int z = (int)y;      // Explicit casting
+
+2. Character Type Casting
+   char ch = 'A';
+   int ascii = ch;      // Implicit casting (gets ASCII value)
+   char back = (char)ascii;  // Explicit casting
+
+Best Practices:
+- Avoid unnecessary casting
+- Be careful with explicit casting to prevent data loss
+- Use appropriate data types from the start
+- Test casting operations with boundary values
+
+Note: When dealing with complex objects, casting works differently
+and involves inheritance relationships (covered in OOP concepts).
+
+
+**************************************************************************************
+
+Object Casting (Reference Type Casting):
+- Converting one object type to another
+- Involves inheritance relationships
+- Two types: Upcasting and Downcasting
+
+1. Upcasting (Implicit)
+   - Converting a subclass reference to a superclass reference
+   - Automatically done by compiler
+   - Safe operation, no explicit cast needed
+   Example:
+   Dog dog = new Dog();
+   Animal animal = dog;    // Upcasting Dog to Animal
+
+2. Downcasting (Explicit)
+   - Converting a superclass reference to a subclass reference
+   - Must be done explicitly using cast operator
+   - Can throw ClassCastException if invalid
+   Example:
+   Animal animal = new Dog();
+   Dog dog = (Dog)animal;    // Downcasting Animal to Dog
+
+Key Points:
+- instanceof operator can check if casting is valid
+  Example:
+  if(animal instanceof Dog) {
+      Dog dog = (Dog)animal;  // Safe downcasting
+  }
+
+- Casting between unrelated classes is not allowed
+  Example:
+  String str = (String)new Dog();  // Compilation error
+
+Best Practices:
+- Always verify type before downcasting using instanceof
+- Prefer polymorphism over explicit casting when possible
+- Handle potential ClassCastException in downcasting
+- Use generics to avoid casting where possible
+
+********************************************************************************************
+
+Operators in Java:
+Operators are special symbols that perform operations on variables and values.
+
+1. Arithmetic Operators:
++ adds two values together
+- subtracts second value from first value
+* multiplies two values together
+/ divides first value by second value
+% returns remainder of division between two values
+++ increases value by 1
+-- decreases value by 1
+
+2. Assignment Operators:
+= assigns right value to left variable
++= adds right value to left variable and assigns result
+-= subtracts right value from left variable and assigns result
+*= multiplies left variable by right value and assigns result
+/= divides left variable by right value and assigns result
+%= divides left variable by right value and assigns remainder
+
+3. Comparison Operators:
+== checks if two values are equal
+!= checks if two values are not equal
+> checks if left value is greater than right value
+< checks if left value is less than right value
+>= checks if left value is greater than or equal to right value
+<= checks if left value is less than or equal to right value
+
+4. Logical Operators:
+&& returns true if both conditions are true
+|| returns true if at least one condition is true
+! reverses the boolean value
+
+5. Bitwise Operators:
+& performs bitwise AND operation on binary values
+| performs bitwise OR operation on binary values
+^ performs bitwise XOR operation on binary values
+~ inverts all bits in a binary value
+<< shifts bits left by specified number of positions                             =>  left shift   ( Empty places fill by 0 )
+>> shifts bits right by specified number of positions (preserves sign)           =>  Right shift  ( Empty place fill by 0 for +num and 1 for -num)
+>>> shifts bits right by specified number of positions (fills with zeros)        =>  unsigned right shift (fills bt 0)
+
+
+6. Ternary Operator:
+?: evaluates a condition and returns one of two values based on result
+
+Operator Precedence:
+- Operators have different priorities
+- Use parentheses to control evaluation order
+- Higher precedence operators are evaluated first
+
+Example:
+int result = 10 + 20 * 30;  // Multiplication happens first
+int result2 = (10 + 20) * 30;  // Addition happens first due to parentheses
+
+Best Practices:
+- Use parentheses to make code more readable
+- Be careful with increment/decrement operators
+- Understand operator precedence
+- Avoid complex nested operations
+
+
+
