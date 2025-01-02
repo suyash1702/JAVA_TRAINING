@@ -1,0 +1,98 @@
+In Java, the if-else structure requires proper use of curly brackets {} to define code blocks. Here are the key points:
+
+1. Basic if-else structure:
+   if (condition) {
+       // code block executed if condition is true
+   } else {
+       // code block executed if condition is false
+   }
+
+2. Single statement without brackets (not recommended):
+   if (condition)
+       statement;  // Only one statement is controlled
+   else 
+       statement;  // Only one statement is controlled
+
+3. Nested if-else with brackets:
+   if (condition1) {
+       if (condition2) {
+           // code block
+       } else {
+           // code block
+       }
+   } else {
+       // code block
+   }
+
+4. Multiple conditions (if-else-if):
+   if (condition1) {
+       // code block
+   } else if (condition2) {
+       // code block
+   } else {
+       // code block
+   }
+
+***************************************************************************************************************
+
+Looping in Java - Entry and Exit Control:
+
+1. Entry-Controlled Loops (Pre-test loops):
+   These loops check the condition before executing the loop body.
+
+   a) while loop: => condition base
+      while (condition) {
+          // loop body
+          // executes as long as condition is true
+      }
+
+   b) for loop: => for finite loops, counter, finite iterations
+      for (initialization; condition; update) {
+          // loop body
+          // executes as long as condition is true
+      }
+
+2. Exit-Controlled Loop (Post-test loop):
+   This loop checks the condition after executing the loop body.
+
+   do-while loop: => loop must be executed once
+   do {
+       // loop body
+       // executes at least once
+   } while (condition);
+
+*********************************************************************************************
+
+// Homework :
+
+// 1 //
+
+            1
+        2   A   3
+    B   4   C   5   D
+
+// 2//
+
+CREATE NUMBER MANIPULATION CLASS
+
+METHOD SWAPNUMBER USING 2RD VARIABLE AND WITHOUT 3RD VARIABLE
+
+********************************************************************************************
+
+Practice :
+
+//SWAPPING
+temp = a;
+a = b;
+b = temp;
+
+//OPERATION
+
+A= 10;
+B= 20;
+ 
+A=A+B   20
+B=A-B   10
+A=A-B   20
+
+********************************************************************************************
